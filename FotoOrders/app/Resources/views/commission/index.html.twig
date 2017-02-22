@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commissions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Filename</th>
+                <th>Creationtime</th>
+                <th>Completiontime</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commission in commissions %}
+            <tr>
+                <td><a href="{{ path('commission_show', { 'id': commission.id }) }}">{{ commission.id }}</a></td>
+                <td>{{ commission.description }}</td>
+                <td>{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% else %} {{ 'In the implementation' }}{% endif %}</td>
+               {# <td>{{ commission.filename }}</td>#}
+                <td><a href="{{ asset('uploads/fotos/' ~ commission.filename) }}">View file</a></td>
+                <td>{{ commission.creationTime|date("Y/m/d") }}</td>
+                <td>{%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('commission_show', { 'id': commission.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('commission_edit', { 'id': commission.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commission_new') }}">Create a new commission</a>
+        </li>
+    </ul>
+{% endblock %}

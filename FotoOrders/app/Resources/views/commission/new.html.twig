@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commission creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        {{ form_row(form.filename) }}
+        <input type="submit" value="Create order" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('commission_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

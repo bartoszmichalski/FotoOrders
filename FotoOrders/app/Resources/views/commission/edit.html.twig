@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commission edit</h1>
+    <table>
+    {{ form_start(edit_form) }}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <tr>
+            <td>{{ form_label(edit_form.status) }}</td><td>{{ form_widget(edit_form.status) }}</td>
+        </tr>
+    {% endif %}
+        <tr>
+            <td>Status: </td><td>{% if  edit_form.status.vars.value  == 0 %}{{ 'Accepted for realization' }} {% else %} {{ 'In the implementation' }}{% endif %}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.description) }}</td><td>{{ form_widget(edit_form.description) }}</td>
+        </tr>
+        <tr>
+            <td>Current file preview: </td><td><img src="{{ asset('/uploads/fotos/') }}{{ edit_form.filename.vars.data.filename }}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Save"/></td>
+        </tr>
+    {{ form_end(edit_form) }}
+    </table>
+    <ul>
+        <li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('commission_all_index') }}">Back to the list</a>
+            {% else %}
+                <a href="{{ path('commission_index') }}">Back to the list</a>
+            {% endif %}
+
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
