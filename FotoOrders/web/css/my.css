@@ -1,0 +1,6 @@
+.img-thumbnail {
+    height: 10%;
+    width: 20%;
+    max-height: 100px;
+    max-width: 200px;
+}

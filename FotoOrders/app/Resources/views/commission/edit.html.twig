@@ -2,40 +2,59 @@
 
 {% block body %}
     <h1>Commission edit</h1>
-    <table>
+    {#<form action="{{ path('commission_edit', {'id': id}) }}" method="post">#}
     {{ form_start(edit_form) }}
+    <table>
+        <tr><td>{{ form_widget(edit_form) }}</td>
+        </tr>
+    {#{% if is_granted('ROLE_ADMIN') %}#}
+        {#<tr>#}
+            {#<td>{{ form_label(edit_form.status) }}</td><td>{{ form_widget(edit_form.status) }}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>{{ form_label(edit_form.completionTime) }}</td><td>{{ form_widget(edit_form.completionTime) }}</td>#}
 
-    {% if is_granted('ROLE_ADMIN') %}
+        {#</tr>#}
+
+    {#{% else %}#}
+
+    {#{% endif %}#}
+
+        {#<tr><td>&nbsp;</td><td></td></tr>#}
+        {#<tr>#}
+            {#<td>{{ form_label(edit_form.filename) }}</td><td>{{ form_widget(edit_form.filename) }}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>Status </td><td>{% if  edit_form.status.vars.value  == 0 %}{{ 'Accepted for realization' }} {% else %} {{ 'In the implementation' }}{% endif %}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>{{ form_label(edit_form.description) }}</td><td>{{ form_widget(edit_form.description) }}</td>#}
+        {#</tr>#}
+        {#<tr>#}
+            {#<td>Current file preview: </td><td><img src="{{ asset('/uploads/fotos/') }}{{ edit_form.filename.vars.data.filename }}"></td>#}
+        {#</tr>#}
         <tr>
-            <td>{{ form_label(edit_form.status) }}</td><td>{{ form_widget(edit_form.status) }}</td>
-        </tr>
-    {% endif %}
-        <tr>
-            <td>Status: </td><td>{% if  edit_form.status.vars.value  == 0 %}{{ 'Accepted for realization' }} {% else %} {{ 'In the implementation' }}{% endif %}</td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>{{ form_label(edit_form.description) }}</td><td>{{ form_widget(edit_form.description) }}</td>
+            <td><input class="btn-lg" type="submit" value="Save"/></td>
         </tr>
-        <tr>
-            <td>Current file preview: </td><td><img src="{{ asset('/uploads/fotos/') }}{{ edit_form.filename.vars.data.filename }}"></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="Save"/></td>
-        </tr>
-    {{ form_end(edit_form) }}
     </table>
+    {#</form>#}
+    {{ form_end(edit_form) }}
+    <br>
     <ul>
         <li>
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('commission_all_index') }}">Back to the list</a>
+                <a class="btn btn-default" href="{{ path('commission_all_index') }}">Back to the list</a>
             {% else %}
-                <a href="{{ path('commission_index') }}">Back to the list</a>
+                <a class="btn btn-default" href="{{ path('commission_index') }}">Back to the list</a>
             {% endif %}
 
         </li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input class="btn btn-default" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

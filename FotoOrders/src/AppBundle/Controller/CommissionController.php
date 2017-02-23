@@ -138,7 +138,7 @@ class CommissionController extends Controller
      * @Method({"GET", "POST"})
      * @Security("has_role('ROLE_USER')")
      */
-    public function editAction(Request $request, Commission $commission)
+    public function editAction(Request $request, Commission $commission, $id)
     {
         $deleteForm = $this->createDeleteForm($commission);
 
@@ -146,7 +146,15 @@ class CommissionController extends Controller
             new File($this->getParameter('foto_directory').'/'.$commission->getFilename())
         );
 
-        $editForm = $this->createForm('AppBundle\Form\CommissionType', $commission);
+        //get logged user
+        $user = $this->getUser();
+
+        //if user has ROLE_ADMIN go to other form
+        if ($user->hasRole('ROLE_ADMIN')) {
+            $editForm = $this->createForm('AppBundle\Form\CommissionTypeByAdmin', $commission);
+        } else {
+            $editForm = $this->createForm('AppBundle\Form\CommissionType', $commission);
+        }
 
         $editForm->handleRequest($request);
 
@@ -169,10 +177,11 @@ class CommissionController extends Controller
             $commission->setFilename($fileName);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('commission_edit', array('id' => $commission->getId()));
+            return $this->redirectToRoute('commission_show', array('id' => $commission->getId()));
         }
 
         return $this->render('commission/edit.html.twig', array(
+            'id' => $id,
             'commission' => $commission,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

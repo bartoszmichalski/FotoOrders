@@ -3,11 +3,19 @@
 {% block body %}
     <h1>Commission</h1>
 
-    <table>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ commission.id }}</td>
+            </tr>
+            <tr>
+                <th>Customer</th>
+                <td>{{ commission.user }}</td>
+            </tr>
+            <tr>
+                <th>Customer email</th>
+                <td>{{ commission.user.email }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -15,18 +23,18 @@
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% else %} {{ 'In the implementation' }}{% endif %}</td>
+                <td>{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% elseif commission.status  == 1 %} {{ 'In the implementation' }} {% elseif commission.status  == 2 %} {{ 'Ready' }} {% elseif commission.status  == 3 %} {{ 'Received by a client' }}{% else %} {{ 'unknown status' }} {% endif %}</td>
             </tr>
             <tr>
                 <th>Filename</th>
                 <td>{{ commission.filename }}</td>
             </tr>
             <tr>
-                <th>Creationtime</th>
+                <th>Creation Date</th>
                 <td>{{ commission.creationTime|date("Y/m/d") }}</td>
             </tr>
             <tr>
-                <th>Completiontime</th>
+                <th>Completion Date</th>
                 <td>{%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}</td>
 
             </tr>
@@ -37,17 +45,22 @@
 
         </tbody>
     </table>
+    <p>Current file preview:</p>
     <img src="{{ asset('/uploads/fotos/') }}{{ commission.filename}}">
     <ul>
         <li>
-            <a href="{{ path('commission_index') }}">Back to the list</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-default" href="{{ path('commission_all_index') }}">Back to the list</a>
+            {% else %}
+                <a class="btn btn-default" href="{{ path('commission_index') }}">Back to the list</a>
+            {% endif %}
         </li>
         <li>
-            <a href="{{ path('commission_edit', { 'id': commission.id }) }}">Edit</a>
+            <a class="btn btn-default" href="{{ path('commission_edit', { 'id': commission.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-default" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

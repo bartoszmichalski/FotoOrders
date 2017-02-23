@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,9 +14,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ));
+        // if user has ROLE_ADMIN redirect to commission show all
+        $user = $this->getUser();
+        if ($user) {
+            if ($user->hasRole('ROLE_ADMIN')) {
+                return $this->redirectToRoute('commission_all_index');
+            } else {
+                return $this->redirectToRoute('commission_index');
+            }
+        }
+        return $this->redirect('http://google.com');
     }
+
 }

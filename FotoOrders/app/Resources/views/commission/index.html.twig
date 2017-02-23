@@ -3,15 +3,15 @@
 {% block body %}
     <h1>Commissions list</h1>
 
-    <table>
+    <table class="table-hover">
         <thead>
-            <tr>
+            <tr class="active">
                 <th>Id</th>
                 <th>Description</th>
                 <th>Status</th>
-                <th>Filename</th>
-                <th>Creationtime</th>
-                <th>Completiontime</th>
+                <th>File</th>
+                <th>Creation Date</th>
+                <th>Completion Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,18 +20,18 @@
             <tr>
                 <td><a href="{{ path('commission_show', { 'id': commission.id }) }}">{{ commission.id }}</a></td>
                 <td>{{ commission.description }}</td>
-                <td>{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% else %} {{ 'In the implementation' }}{% endif %}</td>
+                <td>{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% elseif commission.status  == 1 %} {{ 'In the implementation' }} {% elseif commission.status  == 2 %} {{ 'Ready' }} {% elseif commission.status  == 3 %} {{ 'Received by a client' }}{% else %} {{ 'unknown status' }} {% endif %}</td>
                {# <td>{{ commission.filename }}</td>#}
-                <td><a href="{{ asset('uploads/fotos/' ~ commission.filename) }}">View file</a></td>
+                <td><div class="thumbnail"> <a href="{{ asset('uploads/fotos/' ~ commission.filename) }}"><img  src="{{ asset('uploads/fotos/' ~ commission.filename) }}" width="100px"></a></div></td>
                 <td>{{ commission.creationTime|date("Y/m/d") }}</td>
                 <td>{%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}</td>
                 <td>
-                    <ul>
+                    <ul class="list-style">
                         <li>
-                            <a href="{{ path('commission_show', { 'id': commission.id }) }}">show</a>
+                            <a class="btn btn-default" href="{{ path('commission_show', { 'id': commission.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('commission_edit', { 'id': commission.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('commission_edit', { 'id': commission.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -42,7 +42,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('commission_new') }}">Create a new commission</a>
+            <a class="btn btn-default" href="{{ path('commission_new') }}">Create a new commission</a>
         </li>
     </ul>
 {% endblock %}
