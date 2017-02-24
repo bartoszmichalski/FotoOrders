@@ -7,12 +7,12 @@
         {{ form_widget(form) }}
 
         {{ form_row(form.filename) }}
-        <input type="submit" value="Create order" />
+        <input class="btn btn-default" type="submit" value="Create order" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('commission_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('commission_index') }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}

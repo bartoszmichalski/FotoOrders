@@ -7,4 +7,5 @@
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
+    <a class="btn btn-default" href="{{ path('commission_index') }}">List of commissions</a>
 {% endblock fos_user_content %}
