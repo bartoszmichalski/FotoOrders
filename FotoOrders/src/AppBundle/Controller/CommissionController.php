@@ -6,6 +6,7 @@ use AppBundle\Entity\Commission;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
@@ -201,6 +202,11 @@ class CommissionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $commission->getFilename();
+            $directory = $this->getParameter('foto_directory');
+            if (file_exists($directory.'/'.$file)) {
+                unlink($directory.'/'.$file);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->remove($commission);
             $em->flush($commission);
@@ -225,4 +231,6 @@ class CommissionController extends Controller
             ->getForm()
         ;
     }
+
+
 }
