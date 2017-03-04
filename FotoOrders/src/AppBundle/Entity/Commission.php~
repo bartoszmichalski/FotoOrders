@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Author;
 
 /**
  * Commission
@@ -56,6 +55,13 @@ class Commission
      * @ORM\Column(name="completionTime", type="integer", nullable=true)
      */
     private $completionTime;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="copies", type="integer", nullable=false)
+     */
+    private $copies;
 
     /**
      *
@@ -187,5 +193,28 @@ class Commission
     public function getCompletionTime()
     {
         return $this->completionTime;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Commission
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

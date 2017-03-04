@@ -57,6 +57,13 @@ class Commission
     private $completionTime;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="copies", type="integer", nullable=false)
+     */
+    private $copies;
+
+    /**
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="commissions")
      */
@@ -209,5 +216,28 @@ class Commission
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set copies
+     *
+     * @param integer $copies
+     * @return Commission
+     */
+    public function setCopies($copies)
+    {
+        $this->copies = $copies;
+
+        return $this;
+    }
+
+    /**
+     * Get copies
+     *
+     * @return integer 
+     */
+    public function getCopies()
+    {
+        return $this->copies;
     }
 }

@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 class CommissionType extends AbstractType
 {
@@ -19,7 +19,8 @@ class CommissionType extends AbstractType
         $builder
             ->add('description')
 
-            ->add('filename', FileType::class, array('label' => 'File: '));
+            ->add('filename', FileType::class, array('label' => 'File: '))
+            ->add('copies');
     }
 
 

@@ -30,7 +30,7 @@ class CommissionController extends Controller
     public function indexAction()
     {
         /** @var User $user */
-        $user = $this->getUser();//User
+        $user = $this->getUser();
         $commissions = $user->getCommissions();
 
         return $this->render('commission/index.html.twig', array(
@@ -64,6 +64,7 @@ class CommissionController extends Controller
     public function newAction(Request $request)
     {
         $commission = new Commission();
+        $commission->setCopies(1);
         $form = $this->createForm('AppBundle\Form\CommissionType', $commission);
         $form->handleRequest($request);
 
@@ -89,7 +90,7 @@ class CommissionController extends Controller
             // ... persist the $product variable or any other work
             $commission->setStatus(0);
             $commission->setCreationTime(time());
-            $commission->getCompletionTime(0);
+           // $commission->getCompletionTime(0);
 
 
             $user = $this->getUser();
@@ -211,8 +212,12 @@ class CommissionController extends Controller
             $em->remove($commission);
             $em->flush($commission);
         }
-
-        return $this->redirectToRoute('commission_index');
+        $user = $this->getUser();
+        if ($user->hasRole('ROLE_ADMIN')) {
+                return $this->redirectToRoute('commission_all_index');
+        } else {
+                return $this->redirectToRoute('commission_index');
+        }
     }
 
     /**
