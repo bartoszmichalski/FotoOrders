@@ -55,6 +55,23 @@ class CommissionController extends Controller
     }
 
     /**
+     * Lists all of commission by user.
+     *
+     * @Route("/allByUser/{userId}", name="commission_allByUser_index")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function getAllByIdCommissionsAction($userId)
+    {
+        $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->find($userId);
+        $commissions = $user->getCommissions();
+
+
+        return $this->render('commission/index.html.twig', array(
+            'commissions' => $commissions,
+        ));
+    }
+
+    /**
      * Creates a new commission entity.
      *
      * @Route("/new", name="commission_new")

@@ -4,10 +4,8 @@
     <h1>Commission creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-
-
-        {{ form_row(form.filename) }}
+    {{ form_widget(form) }}
+    {{ form_row(form.filename) }}
     <br>
         <input class="btn btn-default" type="submit" value="Create order" />
     {{ form_end(form) }}

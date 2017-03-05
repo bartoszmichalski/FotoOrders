@@ -8,6 +8,7 @@
         <thead>
             <tr class="active">
                 <th>Id</th>
+                <th>User Email</th>
                 <th>Description</th>
                 <th>Status</th>
                 <th>File</th>
@@ -18,10 +19,11 @@
         </thead>
         <tbody>
         {% for commission in commissions %}
-            <tr class="{%  if  commission.status  == 0 %}danger{% elseif commission.status  == 1 %}info{% elseif commission.status  == 2 %}active{% elseif commission.status  == 3 %}success{% endif %}">
+            <tr>
                 <td><a href="{{ path('commission_show', { 'id': commission.id }) }}">{{ commission.id }}</a></td>
+                <td>{{ commission.user.email }}</td>
                 <td>{{ commission.description }}</td>
-                <td>{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% elseif commission.status  == 1 %} {{ 'In the implementation' }} {% elseif commission.status  == 2 %} {{ 'Ready' }} {% elseif commission.status  == 3 %} {{ 'Received by a client' }}{% else %} {{ 'unknown status' }} {% endif %}</td>
+                <td class="{%  if  commission.status  == 0 %}danger{% elseif commission.status  == 1 %}info{% elseif commission.status  == 2 %}active{% elseif commission.status  == 3 %}success{% endif %}">{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% elseif commission.status  == 1 %} {{ 'In the implementation' }} {% elseif commission.status  == 2 %} {{ 'Ready' }} {% elseif commission.status  == 3 %} {{ 'Received by a client' }}{% else %} {{ 'unknown status' }} {% endif %}</td>
                {# <td>{{ commission.filename }}</td>#}
                 <td><div class="thumbnail"> <a href="{{ asset('uploads/fotos/' ~ commission.filename) }}"><img  src="{{ asset('uploads/fotos/' ~ commission.filename) }}" width="100px"></a></div></td>
                 <td>{{ commission.creationTime|date("Y/m/d") }}</td>
