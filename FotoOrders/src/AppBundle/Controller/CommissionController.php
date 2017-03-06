@@ -60,12 +60,13 @@ class CommissionController extends Controller
      * @Route("/allByUser/{userId}", name="commission_allByUser_index")
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function getAllByIdCommissionsAction($userId)
+    public function getAllByUserIdCommissionsAction($userId)
     {
         $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->find($userId);
+        if (!$user) {
+            throw $this->createNotFoundException('User not found');
+        }
         $commissions = $user->getCommissions();
-
-
         return $this->render('commission/index.html.twig', array(
             'commissions' => $commissions,
         ));
@@ -104,18 +105,13 @@ class CommissionController extends Controller
             // instead of its contents
             $commission->setFilename($fileName);
 
-            // ... persist the $product variable or any other work
+            // set status of commission and creationTIme 
             $commission->setStatus(0);
             $commission->setCreationTime(time());
-           // $commission->getCompletionTime(0);
-
-
+            // set logged user as owner of commission
             $user = $this->getUser();
             $commission->setUser($user);
             $user->addCommission($commission);
-
-
-
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($commission);
