@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Commission;
+use AppBundle\Entity\State;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -105,7 +106,9 @@ class CommissionController extends Controller
             // instead of its contents
             $commission->setFilename($fileName);
 
-            // set status of commission and creationTIme 
+            // set status of commission and creationTIme
+            $state = $this->getDoctrine()->getRepository('AppBundle:State')->find(1);
+            $commission->setState($state);
             $commission->setStatus(0);
             $commission->setCreationTime(time());
             // set logged user as owner of commission

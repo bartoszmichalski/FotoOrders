@@ -18,6 +18,7 @@ class CommissionTypeByAdmin extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('state', 'entity', array('class'=> 'AppBundle\Entity\State', 'choice_label'=>'description'))
             ->add('status', ChoiceType::class, array(
                 'choices'  => array(
                     '0' => 'Accepted for realization',

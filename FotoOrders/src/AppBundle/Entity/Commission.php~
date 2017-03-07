@@ -69,6 +69,11 @@ class Commission
      */
     private $user;
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\State", inversedBy="commissions")
+     */
+    private $state;
 
     /**
      * Get id
@@ -216,5 +221,51 @@ class Commission
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set copies
+     *
+     * @param integer $copies
+     * @return Commission
+     */
+    public function setCopies($copies)
+    {
+        $this->copies = $copies;
+
+        return $this;
+    }
+
+    /**
+     * Get copies
+     *
+     * @return integer 
+     */
+    public function getCopies()
+    {
+        return $this->copies;
+    }
+
+    /**
+     * Set state
+     *
+     * @param \AppBundle\Entity\Commission $state
+     * @return Commission
+     */
+    public function setState(\AppBundle\Entity\Commission $state = null)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return \AppBundle\Entity\Commission 
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 }
