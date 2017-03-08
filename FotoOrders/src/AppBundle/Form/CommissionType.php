@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 
 class CommissionType extends AbstractType
@@ -20,7 +21,7 @@ class CommissionType extends AbstractType
         $builder
             ->add('description', TextType::class, array('label' => 'Description: '))
             ->add('filename', FileType::class, array('label' => 'File: '))
-            ->add('copies');
+            ->add('copies', IntegerType::class, array('label' => 'Copies: '));
     }
 
 

@@ -109,6 +109,8 @@ class CommissionController extends Controller
             // set status of commission and creationTIme
             $state = $this->getDoctrine()->getRepository('AppBundle:State')->find(1);
             $commission->setState($state);
+            $state->addCommission($commission);
+
             $commission->setStatus(0);
             $commission->setCreationTime(time());
             // set logged user as owner of commission

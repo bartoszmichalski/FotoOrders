@@ -11,8 +11,7 @@
                 <th>User Email</th>
                 <th>Description</th>
                 <th>State</th>
-                <th>Status</th>
-                <th>File</th>
+                <th>Image</th>
                 <th>Creation Date</th>
                 <th>Completion Date</th>
                 <th>Actions</th>
@@ -30,8 +29,8 @@
                 </td>
                 <td>{{ commission.description }}</td>
                 {#<td>{{ commission.state.description }}</td>#}
-                <td class="{%  if  commission.state.id  == 0 %}danger{% elseif commission.state.id  == 1 %}info{% elseif commission.state.id  == 2 %}active{% elseif commission.state.id  == 3 %}success{% endif %}">{{ commission.state.description }}</td>
-                <td class="{%  if  commission.status  == 0 %}danger{% elseif commission.status  == 1 %}info{% elseif commission.status  == 2 %}active{% elseif commission.status  == 3 %}success{% endif %}">{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% elseif commission.status  == 1 %} {{ 'In the implementation' }} {% elseif commission.status  == 2 %} {{ 'Ready' }} {% elseif commission.status  == 3 %} {{ 'Received by a client' }}{% else %} {{ 'unknown status' }} {% endif %}</td>
+                <td class="{%  if  commission.state.id  == 1 %}danger{% elseif commission.state.id  == 2 %}info{% elseif commission.state.id  == 3 %}active{% elseif commission.state.id  == 4 %}success{% endif %}">{{ commission.state.description }}</td>
+{#                <td class="{%  if  commission.status  == 0 %}danger{% elseif commission.status  == 1 %}info{% elseif commission.status  == 2 %}active{% elseif commission.status  == 3 %}success{% endif %}">{%  if  commission.status  == 0 %}{{ 'Accepted for realization' }} {% elseif commission.status  == 1 %} {{ 'In the implementation' }} {% elseif commission.status  == 2 %} {{ 'Ready' }} {% elseif commission.status  == 3 %} {{ 'Received by a client' }}{% else %} {{ 'unknown status' }} {% endif %}</td>#}
                {# <td>{{ commission.filename }}</td>#}
                 <td><div class="thumbnail"> <a href="{{ asset('uploads/fotos/' ~ commission.filename) }}"><img  src="{{ asset('uploads/fotos/' ~ commission.filename) }}" width="100px"></a></div></td>
                 <td>{{ commission.creationTime|date("Y/m/d") }}</td>

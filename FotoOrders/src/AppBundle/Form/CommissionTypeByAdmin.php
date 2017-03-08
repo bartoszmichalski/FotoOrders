@@ -19,14 +19,14 @@ class CommissionTypeByAdmin extends AbstractType
     {
         $builder
             ->add('state', 'entity', array('class'=> 'AppBundle\Entity\State', 'choice_label'=>'description'))
-            ->add('status', ChoiceType::class, array(
-                'choices'  => array(
-                    '0' => 'Accepted for realization',
-                    '1' => 'In the implementation',
-                    '2' => 'Ready',
-                    '3' => 'Received by a client',
-                ),
-            ))
+//            ->add('status', ChoiceType::class, array(
+//                'choices'  => array(
+//                    '0' => 'Accepted for realization',
+//                    '1' => 'In the implementation',
+//                    '2' => 'Ready',
+//                    '3' => 'Received by a client',
+//                ),
+//            ))
             ->add('completionTime', DateType::class, array(
                 'widget' => 'single_text',
                 'input' => 'timestamp',
