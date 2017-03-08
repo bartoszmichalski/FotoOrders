@@ -223,6 +223,7 @@ class CommissionController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $commission->getFilename();
             $directory = $this->getParameter('foto_directory');
+            //delete file from disk
             if (file_exists($directory.'/'.$file)) {
                 unlink($directory.'/'.$file);
             }
