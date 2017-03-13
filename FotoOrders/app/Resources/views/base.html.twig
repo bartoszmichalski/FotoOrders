@@ -45,8 +45,14 @@
                                     <li><a href="#">Something else here</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                    <li>{% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('commission_all_index') }}">Show Commission All</a>
+                                        {% endif %}
+                                    </li>
+                                    <li>{% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('state_index') }}">Manage states</a>
+                                        {% endif %}
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
