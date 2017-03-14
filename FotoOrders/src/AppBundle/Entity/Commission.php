@@ -74,6 +74,12 @@ class Commission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\State", inversedBy="commissions")
      */
     private $state;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Paper", inversedBy="commissions")
+     */
+    private $paper;
 
     /**
      * Get id
@@ -267,5 +273,28 @@ class Commission
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Set paper
+     *
+     * @param \AppBundle\Entity\Paper $paper
+     * @return Commission
+     */
+    public function setPaper(\AppBundle\Entity\Paper $paper = null)
+    {
+        $this->paper = $paper;
+
+        return $this;
+    }
+
+    /**
+     * Get paper
+     *
+     * @return \AppBundle\Entity\Paper 
+     */
+    public function getPaper()
+    {
+        return $this->paper;
     }
 }
