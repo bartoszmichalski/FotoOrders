@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Paper
  *
@@ -70,5 +70,38 @@ class Paper
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add commissions
+     *
+     * @param \AppBundle\Entity\Commission $commissions
+     * @return Paper
+     */
+    public function addCommission(\AppBundle\Entity\Commission $commissions)
+    {
+        $this->commissions[] = $commissions;
+
+        return $this;
+    }
+
+    /**
+     * Remove commissions
+     *
+     * @param \AppBundle\Entity\Commission $commissions
+     */
+    public function removeCommission(\AppBundle\Entity\Commission $commissions)
+    {
+        $this->commissions->removeElement($commissions);
+    }
+
+    /**
+     * Get commissions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommissions()
+    {
+        return $this->commissions;
     }
 }

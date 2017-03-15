@@ -80,6 +80,12 @@ class Commission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Paper", inversedBy="commissions")
      */
     private $paper;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Format", inversedBy="commissions")
+     */
+    private $format;
 
     /**
      * Get id
@@ -296,5 +302,28 @@ class Commission
     public function getPaper()
     {
         return $this->paper;
+    }
+
+    /**
+     * Set format
+     *
+     * @param \AppBundle\Entity\Format $format
+     * @return Commission
+     */
+    public function setFormat(\AppBundle\Entity\Format $format = null)
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return \AppBundle\Entity\Format 
+     */
+    public function getFormat()
+    {
+        return $this->format;
     }
 }
