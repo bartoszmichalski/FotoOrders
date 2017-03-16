@@ -57,6 +57,10 @@
                                         <a href="{{ path('paper_index') }}">Manage paper types</a>
                                         {% endif %}
                                     </li>
+                                     <li>{% if is_granted('ROLE_ADMIN') %}
+                                        <a href="{{ path('format_index') }}">Manage format types</a>
+                                        {% endif %}
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
