@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Format;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Format controller.
@@ -19,6 +21,7 @@ class FormatController extends Controller
      *
      * @Route("/", name="format_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {
@@ -36,6 +39,7 @@ class FormatController extends Controller
      *
      * @Route("/new", name="format_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -62,6 +66,7 @@ class FormatController extends Controller
      *
      * @Route("/{id}", name="format_show")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAction(Format $format)
     {
@@ -78,6 +83,7 @@ class FormatController extends Controller
      *
      * @Route("/{id}/edit", name="format_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Format $format)
     {
@@ -103,6 +109,7 @@ class FormatController extends Controller
      *
      * @Route("/{id}", name="format_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Format $format)
     {
