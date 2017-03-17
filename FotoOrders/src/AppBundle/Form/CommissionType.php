@@ -22,8 +22,8 @@ class CommissionType extends AbstractType
             ->add('description', TextType::class, array('label' => 'Description: '))
             ->add('filename', FileType::class, array('label' => 'File: '))
             ->add('copies', IntegerType::class, array('label' => 'Copies: '))
-            ->add('paper', 'entity', array('class'=> 'AppBundle\Entity\Paper', 'choice_label'=>'description'))
-            ->add('format', 'entity', array('class'=> 'AppBundle\Entity\Format', 'choice_label'=>'description'));  
+            ->add('paper', 'entity', array('class'=> 'AppBundle\Entity\Paper', 'choice_label'=>'description', 'label' => 'Paper: '))
+            ->add('format', 'entity', array('class'=> 'AppBundle\Entity\Format', 'choice_label'=>'description', 'label' => 'Format: '));  
     }
 
 

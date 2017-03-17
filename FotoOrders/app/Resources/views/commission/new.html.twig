@@ -3,12 +3,30 @@
 {% block body %}
     <h1>Commission creation</h1>
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_row(form.filename) }}
+    <table>
+        <tr>
+            <td colspan="2">{{ form_start(form) }}</td>
+        </tr>
+        
+        <tr>
+            <td>{{ form_label(form.description) }}</td><td>{{ form_widget(form.description) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.filename) }}</td><td>{{ form_widget(form.filename) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.format) }}</td><td>{{ form_widget(form.format) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.paper) }}</td><td>{{ form_widget(form.paper) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.copies) }}</td><td>{{ form_widget(form.copies) }}</td>
+        </tr>
+    </table>
     <br>
         <input class="btn btn-default" type="submit" value="Create order" />
-    {{ form_end(form) }}
+        {{ form_end(form) }}
     <br>
     <ul>
         <li>
