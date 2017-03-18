@@ -1,23 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Commission edit</h1>
-    {#<form action="{{ path('commission_edit', {'id': id}) }}" method="post">#}
-    {{ form_start(edit_form) }}
-    {{ form_widget(edit_form) }}
+    <h1>Edit Order</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+    
+        {{ form_start(edit_form) }}
+    
     <table>
         <tr>
+            <td>{{ form_label(edit_form.completionTime) }}</td><td>{{ form_widget(edit_form.completionTime) }}</td>
         </tr>
-    
         <tr>
-            <td>&nbsp;</td>
+            <td>{{ form_label(edit_form.state) }}</td><td>{{ form_widget(edit_form.state) }}</td>
+        </tr>
+        
+        
+        
+            <td><input class="btn-lg" type="submit" value="Save"/></td>
+        </tr>
+    </table>
+    
+    {{ form_end(edit_form) }}
+     {% else %}
+   
+          {{ form_start(edit_form) }}
+    
+    <table>
+        <tr>
+            <td>{{ form_label(edit_form.description) }}</td><td>{{ form_widget(edit_form.description) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.filename) }}</td><td>{{ form_widget(edit_form.filename) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.format) }}</td><td>{{ form_widget(edit_form.format) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.paper) }}</td><td>{{ form_widget(edit_form.paper) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(edit_form.copies) }}</td><td>{{ form_widget(edit_form.copies) }}</td>
         </tr>
         <tr>
             <td><input class="btn-lg" type="submit" value="Save"/></td>
         </tr>
     </table>
-    {#</form>#}
+    
     {{ form_end(edit_form) }}
+         
+    {% endif %}
     <br>
     <ul>
         <li>
