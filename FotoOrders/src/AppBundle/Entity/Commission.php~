@@ -303,4 +303,27 @@ class Commission
     {
         return $this->paper;
     }
+
+    /**
+     * Set format
+     *
+     * @param \AppBundle\Entity\Format $format
+     * @return Commission
+     */
+    public function setFormat(\AppBundle\Entity\Format $format = null)
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return \AppBundle\Entity\Format 
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
 }

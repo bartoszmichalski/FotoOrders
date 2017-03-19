@@ -18,17 +18,37 @@
         <tbody>
         {% for commission in commissions %}
             <tr>
-                <td><a href="{{ path('commission_show', { 'id': commission.id }) }}">{{ commission.id }}</a></td>
-                <td>{% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('commission_allByUser_index', {'userId': commission.user.id }) }}">
-                        {% endif %}
-                    {{ commission.user.email }}</a>
+                <td>
+                    <a href="{{ path('commission_show', { 'id': commission.id }) }}">{{ commission.id }}</a>
                 </td>
-                <td>{{ commission.description }}</td>
-                <td class="{%  if  commission.state.id  == 1 %}danger{% elseif commission.state.id  == 2 %}info{% elseif commission.state.id  == 3 %}active{% elseif commission.state.id  == 4 %}success{% endif %}">{{ commission.state.description }}</td>
-                <td><div class="thumbnail"> <a href="{{ asset('uploads/fotos/' ~ commission.filename) }}"><img  src="{{ asset('uploads/fotos/' ~ commission.filename) }}" width="100px"></a></div></td>
-                <td>{{ commission.creationTime|date("Y/m/d") }}</td>
-                <td>{%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}</td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('commission_allByUser_index', {'userId': commission.user.id }) }}">
+                            {{ commission.user.email }}
+                        </a>
+                    {% else %}
+                    {{ commission.user.email }}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ commission.description }}
+                </td>
+                <td class="{%  if  commission.state.id  == 1 %}danger{% elseif commission.state.id  == 2 %}info{% elseif commission.state.id  == 3 %}active{% elseif commission.state.id  == 4 %}success{% endif %}">
+                    {{ commission.state.description }}
+                </td>
+                <td>
+                    <div class="thumbnail">
+                        <a href="{{ asset('uploads/fotos/' ~ commission.filename) }}">
+                            <img  src="{{ asset('uploads/fotos/' ~ commission.filename) }}" width="100px">
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    {{ commission.creationTime|date("Y/m/d") }}
+                </td>
+                <td>
+                    {%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}
+                </td>
                 <td>
                     <ul class="list-style">
                         <li>

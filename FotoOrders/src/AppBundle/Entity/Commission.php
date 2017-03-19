@@ -29,13 +29,6 @@ class Commission
     private $description;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="status", type="integer")
-     */
-    private $status;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=255)
@@ -118,29 +111,6 @@ class Commission
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set status
-     *
-     * @param integer $status
-     * @return Commission
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return integer 
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     /**

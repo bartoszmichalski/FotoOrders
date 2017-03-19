@@ -111,7 +111,7 @@ class CommissionController extends Controller
             $commission->setState($state);
             $state->addCommission($commission);
 
-            $commission->setStatus(0);
+            
             $commission->setCreationTime(time());
             // set logged user as owner of commission
             $user = $this->getUser();
