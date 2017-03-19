@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Format
@@ -27,8 +28,17 @@ class Format
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commission", mappedBy="format")
+     */
+    private $commissions;
 
-
+    public function __construct()
+    {
+        $this->commissions = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -60,5 +70,38 @@ class Format
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add commissions
+     *
+     * @param \AppBundle\Entity\Commission $commissions
+     * @return Format
+     */
+    public function addCommission(\AppBundle\Entity\Commission $commissions)
+    {
+        $this->commissions[] = $commissions;
+
+        return $this;
+    }
+
+    /**
+     * Remove commissions
+     *
+     * @param \AppBundle\Entity\Commission $commissions
+     */
+    public function removeCommission(\AppBundle\Entity\Commission $commissions)
+    {
+        $this->commissions->removeElement($commissions);
+    }
+
+    /**
+     * Get commissions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommissions()
+    {
+        return $this->commissions;
     }
 }
