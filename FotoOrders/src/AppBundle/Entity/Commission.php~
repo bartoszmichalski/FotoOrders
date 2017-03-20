@@ -79,7 +79,13 @@ class Commission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Format", inversedBy="commissions")
      */
     private $format;
-
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Shipment", inversedBy="commissions")
+     */
+    private $shipment;
+    
     /**
      * Get id
      *

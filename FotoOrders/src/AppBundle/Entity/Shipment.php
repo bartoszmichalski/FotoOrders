@@ -3,15 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Format
+ * Shipment
  *
- * @ORM\Table(name="format")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FormatRepository")
+ * @ORM\Table(name="shipment")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ShipmentRepository")
  */
-class Format
+class Shipment
 {
     /**
      * @var int
@@ -25,20 +24,22 @@ class Format
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
     
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commission", mappedBy="format")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Shipment", mappedBy="shipment")
      */
     private $commissions;
 
-    public function __construct()
-    {
-        $this->commissions = new ArrayCollection();
-    }
-    
     /**
      * Get id
      *
@@ -50,10 +51,33 @@ class Format
     }
 
     /**
+     * Set type
+     *
+     * @param string $type
+     * @return Shipment
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
-     * @return Format
+     * @return Shipment
      */
     public function setDescription($description)
     {
@@ -71,14 +95,21 @@ class Format
     {
         return $this->description;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commissions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Add commissions
      *
-     * @param \AppBundle\Entity\Commission $commissions
-     * @return Format
+     * @param \AppBundle\Entity\Shipment $commissions
+     * @return Shipment
      */
-    public function addCommission(\AppBundle\Entity\Commission $commissions)
+    public function addCommission(\AppBundle\Entity\Shipment $commissions)
     {
         $this->commissions[] = $commissions;
 
@@ -88,9 +119,9 @@ class Format
     /**
      * Remove commissions
      *
-     * @param \AppBundle\Entity\Commission $commissions
+     * @param \AppBundle\Entity\Shipment $commissions
      */
-    public function removeCommission(\AppBundle\Entity\Commission $commissions)
+    public function removeCommission(\AppBundle\Entity\Shipment $commissions)
     {
         $this->commissions->removeElement($commissions);
     }

@@ -79,7 +79,13 @@ class Commission
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Format", inversedBy="commissions")
      */
     private $format;
-
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Shipment", inversedBy="commissions")
+     */
+    private $shipment;
+    
     /**
      * Get id
      *
@@ -295,5 +301,28 @@ class Commission
     public function getFormat()
     {
         return $this->format;
+    }
+
+    /**
+     * Set shipment
+     *
+     * @param \AppBundle\Entity\Shipment $shipment
+     * @return Commission
+     */
+    public function setShipment(\AppBundle\Entity\Shipment $shipment = null)
+    {
+        $this->shipment = $shipment;
+
+        return $this;
+    }
+
+    /**
+     * Get shipment
+     *
+     * @return \AppBundle\Entity\Shipment 
+     */
+    public function getShipment()
+    {
+        return $this->shipment;
     }
 }

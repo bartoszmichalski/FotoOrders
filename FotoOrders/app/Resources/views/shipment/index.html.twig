@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Shipments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shipment in shipments %}
+            <tr>
+                <td><a href="{{ path('shipment_show', { 'id': shipment.id }) }}">{{ shipment.id }}</a></td>
+                <td>{{ shipment.type }}</td>
+                <td>{{ shipment.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('shipment_show', { 'id': shipment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('shipment_edit', { 'id': shipment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('shipment_new') }}">Create a new shipment</a>
+        </li>
+    </ul>
+{% endblock %}
