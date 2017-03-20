@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Edit Order</h1>
+    <h1>Commision Order</h1>
     {% if is_granted('ROLE_ADMIN') %}
         {{ form_start(edit_form) }}
-        <table>
+        <table class="table table-hover">
             <tr>
                 <td>{{ form_label(edit_form.completionTime) }}</td><td>{{ form_widget(edit_form.completionTime) }}</td>
             </tr>
@@ -17,7 +17,7 @@
         {{ form_end(edit_form) }}
      {% else %}
         {{ form_start(edit_form) }}
-        <table>
+        <table class="table table-hover">
             <tr>
                 <td>{{ form_label(edit_form.description) }}</td><td>{{ form_widget(edit_form.description) }}</td>
             </tr>

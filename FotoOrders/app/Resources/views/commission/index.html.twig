@@ -47,7 +47,11 @@
                     {{ commission.creationTime|date("Y/m/d") }}
                 </td>
                 <td>
-                    {%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}
+                    {%  if  commission.completionTime != 0 %}
+                        {{ commission.completionTime|date("Y/m/d") }}
+                    {% else %}
+                        {{ '---' }}
+                    {% endif %}
                 </td>
                 <td>
                     <ul class="list-style">
