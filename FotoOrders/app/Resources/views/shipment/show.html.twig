@@ -19,7 +19,7 @@
             </tr>
         </tbody>
     </table>
-
+    {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
             <a href="{{ path('shipment_index') }}">Back to the list</a>
@@ -33,4 +33,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

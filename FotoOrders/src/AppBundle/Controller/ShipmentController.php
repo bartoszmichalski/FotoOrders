@@ -21,7 +21,7 @@ class ShipmentController extends Controller
      *
      * @Route("/", name="shipment_index")
      * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
     {
