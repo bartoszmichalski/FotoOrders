@@ -35,6 +35,13 @@ class Shipment
      */
     private $description;
     
+        /**
+     * @var float
+     *
+     * @ORM\Column(name="value", type="float", nullable=true)
+     */
+    private $value;
+    
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Shipment", mappedBy="shipment")
      */
@@ -94,5 +101,45 @@ class Shipment
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commissions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add commissions
+     *
+     * @param \AppBundle\Entity\Shipment $commissions
+     * @return Shipment
+     */
+    public function addCommission(\AppBundle\Entity\Shipment $commissions)
+    {
+        $this->commissions[] = $commissions;
+
+        return $this;
+    }
+
+    /**
+     * Remove commissions
+     *
+     * @param \AppBundle\Entity\Shipment $commissions
+     */
+    public function removeCommission(\AppBundle\Entity\Shipment $commissions)
+    {
+        $this->commissions->removeElement($commissions);
+    }
+
+    /**
+     * Get commissions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommissions()
+    {
+        return $this->commissions;
     }
 }

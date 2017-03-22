@@ -35,6 +35,13 @@ class Shipment
      */
     private $description;
     
+        /**
+     * @var float
+     *
+     * @ORM\Column(name="value", type="float", nullable=true)
+     */
+    private $value;
+    
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Shipment", mappedBy="shipment")
      */
@@ -134,5 +141,28 @@ class Shipment
     public function getCommissions()
     {
         return $this->commissions;
+    }
+
+    /**
+     * Set value
+     *
+     * @param float $value
+     * @return Shipment
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return float 
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }
