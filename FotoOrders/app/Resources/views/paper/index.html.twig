@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Description</th>
+                <th>Price</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a></td>
                 <td>{{ paper.description }}</td>
+                <td>{{ paper.price }}</td>
                 <td>
                     <ul>
                         <li>

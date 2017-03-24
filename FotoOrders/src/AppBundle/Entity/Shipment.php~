@@ -142,4 +142,27 @@ class Shipment
     {
         return $this->commissions;
     }
+
+    /**
+     * Set value
+     *
+     * @param float $value
+     * @return Shipment
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return float 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 }

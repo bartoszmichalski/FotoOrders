@@ -27,6 +27,13 @@ class Paper
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commission", mappedBy="paper")
@@ -103,5 +110,28 @@ class Paper
     public function getCommissions()
     {
         return $this->commissions;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     * @return Paper
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }
