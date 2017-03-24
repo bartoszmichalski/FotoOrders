@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a></td>
                 <td>{{ paper.description }}</td>
-                <td>{{ paper.price }}</td>
+                <td>{{ paper.price |number_format(2, '.', ',') }}</td>
                 <td>
                     <ul>
                         <li>
