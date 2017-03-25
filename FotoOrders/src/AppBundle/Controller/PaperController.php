@@ -21,7 +21,6 @@ class PaperController extends Controller
      *
      * @Route("/", name="paper_index")
      * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {
