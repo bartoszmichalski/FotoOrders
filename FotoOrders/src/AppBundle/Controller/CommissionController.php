@@ -144,9 +144,14 @@ class CommissionController extends Controller
 //        $commission->setFilename(
 //            new File($this->getParameter('foto_directory').'/'.$commission->getFilename())
 //        );
-
+        $commissionPaperValue = $commission->getPaper()->getPrice();
+        $commissionCopies = $commission->getCopies();
+        $commissionShipment = $commission->getShipment()->getValue();
+        $commissionValue = ($commissionPaperValue * $commissionCopies) + $commissionShipment;
+        
         return $this->render('commission/show.html.twig', array(
             'commission' => $commission,
+            'commissionValue' => $commissionValue,
             'delete_form' => $deleteForm->createView(),
         ));
     }
