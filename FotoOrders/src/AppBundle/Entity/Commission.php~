@@ -87,6 +87,13 @@ class Commission
     private $shipment;
     
     /**
+     * @var float
+     *
+     * @ORM\Column(name="value", type="float", nullable=false)
+     */
+    private $value;
+    
+    /**
      * Get id
      *
      * @return integer 

@@ -111,4 +111,27 @@ class Paper
     {
         return $this->commissions;
     }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     * @return Paper
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

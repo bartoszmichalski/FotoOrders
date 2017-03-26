@@ -87,6 +87,13 @@ class Commission
     private $shipment;
     
     /**
+     * @var float
+     *
+     * @ORM\Column(name="value", type="float", nullable=false)
+     */
+    private $value;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -324,5 +331,28 @@ class Commission
     public function getShipment()
     {
         return $this->shipment;
+    }
+
+    /**
+     * Set value
+     *
+     * @param float $value
+     * @return Commission
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return float 
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }
