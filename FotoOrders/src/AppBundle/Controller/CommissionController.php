@@ -111,10 +111,8 @@ class CommissionController extends Controller
             $commission->setState($state);
             $state->addCommission($commission);
             
-            $commissionPaperValue = $commission->getPaper()->getPrice();
-            $commissionCopies = $commission->getCopies();
-            $commissionShipment = $commission->getShipment()->getValue();
-            $commission->setValue(($commissionPaperValue * $commissionCopies) + $commissionShipment);
+            //set commission value according to copies, paper price & shipment value
+            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
 
             
             $commission->setCreationTime(time());
@@ -201,11 +199,7 @@ class CommissionController extends Controller
             // instead of its contents
             $commission->setFilename($fileName);
             
-            $commissionPaperValue = $commission->getPaper()->getPrice();
-            $commissionCopies = $commission->getCopies();
-            $commissionShipment = $commission->getShipment()->getValue();
-            $commission->setValue(($commissionPaperValue * $commissionCopies) + $commissionShipment);
-
+            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
             
             
             $this->getDoctrine()->getManager()->flush();
