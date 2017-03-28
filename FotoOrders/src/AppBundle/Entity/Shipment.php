@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Shipment
@@ -35,7 +36,7 @@ class Shipment
      */
     private $description;
     
-        /**
+    /**
      * @var float
      *
      * @ORM\Column(name="value", type="float", nullable=true)
@@ -43,9 +44,17 @@ class Shipment
     private $value;
     
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Shipment", mappedBy="shipment")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commission", mappedBy="shipment")
      */
     private $commissions;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commissions = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -101,13 +110,6 @@ class Shipment
     public function getDescription()
     {
         return $this->description;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commissions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
