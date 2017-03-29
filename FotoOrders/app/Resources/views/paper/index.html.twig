@@ -22,10 +22,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('paper_show', { 'id': paper.id }) }}">show</a>
+                            <a class="btn btn-default" href="{{ path('paper_show', { 'id': paper.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('paper_edit', { 'id': paper.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('paper_edit', { 'id': paper.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
     {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
-            <a href="{{ path('paper_new') }}">Create a new paper</a>
+            <a class="btn btn-default"href="{{ path('paper_new') }}">Create a new paper</a>
         </li>
     </ul>
     {% endif %}

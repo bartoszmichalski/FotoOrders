@@ -22,14 +22,14 @@
     {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
-            <a href="{{ path('shipment_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('shipment_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('shipment_edit', { 'id': shipment.id }) }}">Edit</a>
+            <a class="btn btn-default" href="{{ path('shipment_edit', { 'id': shipment.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-default" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

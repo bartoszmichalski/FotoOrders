@@ -22,14 +22,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('paper_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('paper_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('paper_edit', { 'id': paper.id }) }}">Edit</a>
+            <a class="btn btn-default" href="{{ path('paper_edit', { 'id': paper.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-default" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

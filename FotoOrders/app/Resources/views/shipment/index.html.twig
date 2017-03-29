@@ -24,10 +24,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('shipment_show', { 'id': shipment.id }) }}">show</a>
+                            <a class="btn btn-default" href="{{ path('shipment_show', { 'id': shipment.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('shipment_edit', { 'id': shipment.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('shipment_edit', { 'id': shipment.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +39,7 @@
     {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
-            <a href="{{ path('shipment_new') }}">Create a new shipment</a>
+            <a class="btn btn-default" href="{{ path('shipment_new') }}">Create a new shipment</a>
         </li>
     </ul>
     {% endif %}

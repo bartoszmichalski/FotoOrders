@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class CommissionType extends AbstractType
@@ -22,9 +23,9 @@ class CommissionType extends AbstractType
             ->add('description', TextType::class, array('label' => 'Description: '))
             ->add('filename', FileType::class, array('label' => 'File: '))
             ->add('copies', IntegerType::class, array('label' => 'Copies: '))
-            ->add('paper', 'entity', array('class'=> 'AppBundle\Entity\Paper', 'choice_label'=>'description', 'label' => 'Paper: '))
-            ->add('format', 'entity', array('class'=> 'AppBundle\Entity\Format', 'choice_label'=>'description', 'label' => 'Format: '))  
-            ->add('shipment', 'entity', array('class'=> 'AppBundle\Entity\Shipment', 'choice_label'=>'type', 'label' => 'Shipment: '));  
+            ->add('paper', EntityType::class , array('class'=> 'AppBundle\Entity\Paper', 'choice_label'=>'description', 'label' => 'Paper: '))
+            ->add('format', EntityType::class , array('class'=> 'AppBundle\Entity\Format', 'choice_label'=>'description', 'label' => 'Format: '))  
+            ->add('shipment', EntityType::class , array('class'=> 'AppBundle\Entity\Shipment', 'choice_label'=>'type', 'label' => 'Shipment: '));  
 
         }
 

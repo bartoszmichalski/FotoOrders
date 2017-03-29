@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use XMLReader;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CommissionTypeByAdmin extends AbstractType
 {
@@ -19,15 +20,7 @@ class CommissionTypeByAdmin extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('state', 'entity', array('class'=> 'AppBundle\Entity\State', 'choice_label'=>'description'))
-//            ->add('status', ChoiceType::class, array(
-//                'choices'  => array(
-//                    '0' => 'Accepted for realization',
-//                    '1' => 'In the implementation',
-//                    '2' => 'Ready',
-//                    '3' => 'Received by a client',
-//                ),
-//            ))
+            ->add('state', EntityType::class , array('class'=> 'AppBundle\Entity\State', 'choice_label'=>'description'))
             ->add('completionTime', DateType::class, array(
                 'widget' => 'single_text',
                 'input' => 'timestamp',

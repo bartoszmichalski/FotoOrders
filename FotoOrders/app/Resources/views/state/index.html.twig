@@ -19,10 +19,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('state_show', { 'id': state.id }) }}">show</a>
+                            <a class="btn btn-default" href="{{ path('state_show', { 'id': state.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('state_edit', { 'id': state.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('state_edit', { 'id': state.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('state_new') }}">Create a new state</a>
+            <a class="btn btn-default" href="{{ path('state_new') }}">Create a new state</a>
         </li>
     </ul>
 {% endblock %}

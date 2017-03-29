@@ -19,10 +19,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('format_show', { 'id': format.id }) }}">show</a>
+                            <a class="btn btn-default" href="{{ path('format_show', { 'id': format.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('format_edit', { 'id': format.id }) }}">edit</a>
+                            <a class="btn btn-default" href="{{ path('format_edit', { 'id': format.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +33,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('format_new') }}">Create a new format</a>
+            <a class="btn btn-default" href="{{ path('format_new') }}">Create a new format</a>
         </li>
     </ul>
 {% endblock %}
