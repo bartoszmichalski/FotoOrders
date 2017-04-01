@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\DiscountCoupon;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Discountcoupon controller.
@@ -19,6 +21,7 @@ class DiscountCouponController extends Controller
      *
      * @Route("/", name="discountcoupon_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {
@@ -36,6 +39,7 @@ class DiscountCouponController extends Controller
      *
      * @Route("/new", name="discountcoupon_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -62,6 +66,7 @@ class DiscountCouponController extends Controller
      *
      * @Route("/{id}", name="discountcoupon_show")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAction(DiscountCoupon $discountCoupon)
     {
@@ -78,6 +83,7 @@ class DiscountCouponController extends Controller
      *
      * @Route("/{id}/edit", name="discountcoupon_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, DiscountCoupon $discountCoupon)
     {
@@ -103,6 +109,7 @@ class DiscountCouponController extends Controller
      *
      * @Route("/{id}", name="discountcoupon_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, DiscountCoupon $discountCoupon)
     {
