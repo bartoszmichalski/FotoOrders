@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Discountcoupons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Used</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for discountCoupon in discountCoupons %}
+            <tr>
+                <td><a href="{{ path('discountcoupon_show', { 'id': discountCoupon.id }) }}">{{ discountCoupon.id }}</a></td>
+                <td>{{ discountCoupon.code }}</td>
+                <td>{% if discountCoupon.used %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('discountcoupon_show', { 'id': discountCoupon.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('discountcoupon_edit', { 'id': discountCoupon.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('discountcoupon_new') }}">Create a new discountCoupon</a>
+        </li>
+    </ul>
+{% endblock %}
