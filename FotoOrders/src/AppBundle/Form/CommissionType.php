@@ -25,8 +25,8 @@ class CommissionType extends AbstractType
             ->add('copies', IntegerType::class, array('label' => 'Copies: '))
             ->add('paper', EntityType::class , array('class'=> 'AppBundle\Entity\Paper', 'choice_label'=>'description', 'label' => 'Paper: '))
             ->add('format', EntityType::class , array('class'=> 'AppBundle\Entity\Format', 'choice_label'=>'description', 'label' => 'Format: '))  
-            ->add('shipment', EntityType::class , array('class'=> 'AppBundle\Entity\Shipment', 'choice_label'=>'type', 'label' => 'Shipment: '));  
-
+            ->add('shipment', EntityType::class , array('class'=> 'AppBundle\Entity\Shipment', 'choice_label'=>'type', 'label' => 'Shipment: '))  
+            ->add('discountCoupon', EntityType::class , array('class'=> 'AppBundle\Entity\DiscountCoupon', 'choice_label'=>'code', 'label' => 'DiscountCoupon: '));
         }
 
 
