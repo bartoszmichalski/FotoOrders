@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Discountcoupon</h1>
+    <h1>Discount Coupon</h1>
 
-    <table>
+    <table class="table table-hover">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -22,10 +22,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('discountcoupon_index') }}">Back to the list</a>
+            <a class="btn btn-default" href="{{ path('discountcoupon_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('discountcoupon_edit', { 'id': discountCoupon.id }) }}">Edit</a>
+            <a class="btn btn-default" href="{{ path('discountcoupon_edit', { 'id': discountCoupon.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
