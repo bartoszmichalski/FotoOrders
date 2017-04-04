@@ -95,7 +95,7 @@ class Commission
     
     /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\DiscountCoupon", inversedBy="commission" )
+     * @ORM\Column(name="discount_coupon", type="string", length=255, nullable=true)
      */
     private $discountCoupon;
     
@@ -365,10 +365,10 @@ class Commission
     /**
      * Set discountCoupon
      *
-     * @param \AppBundle\Entity\DiscountCoupon $discountCoupon
+     * @param string $discountCoupon
      * @return Commission
      */
-    public function setDiscountCoupon(\AppBundle\Entity\DiscountCoupon $discountCoupon = null)
+    public function setDiscountCoupon($discountCoupon)
     {
         $this->discountCoupon = $discountCoupon;
 
@@ -378,7 +378,7 @@ class Commission
     /**
      * Get discountCoupon
      *
-     * @return \AppBundle\Entity\DiscountCoupon 
+     * @return string 
      */
     public function getDiscountCoupon()
     {

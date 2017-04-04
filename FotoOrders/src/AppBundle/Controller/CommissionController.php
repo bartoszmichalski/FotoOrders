@@ -120,7 +120,13 @@ class CommissionController extends Controller
             $user = $this->getUser();
             $commission->setUser($user);
             $user->addCommission($commission);
-
+            
+            $discountCoupon = $this->getDoctrine()->getRepository('AppBundle:DiscountCoupon')->findOneBy(['code'=>$commission->getDiscountCoupon()]);
+            if (isset($discountCoupon)) {
+                $commission->setDiscountCoupon('0.1');
+            } else {
+                $commission->setDiscountCoupon('0');
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($commission);
             $em->flush($commission);

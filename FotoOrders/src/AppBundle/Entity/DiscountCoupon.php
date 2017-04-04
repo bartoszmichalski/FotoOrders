@@ -34,11 +34,6 @@ class DiscountCoupon
      * @ORM\Column(name="used", type="boolean")
      */
     private $used;
-    
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Commission", mappedBy="discountCoupon")
-     */
-    private $commission;
 
     /**
      * Get id
@@ -94,61 +89,5 @@ class DiscountCoupon
     public function getUsed()
     {
         return $this->used;
-    }
-
-    /**
-     * Add commissions
-     *
-     * @param \AppBundle\Entity\Commission $commissions
-     * @return DiscountCoupon
-     */
-    public function addCommission(\AppBundle\Entity\Commission $commissions)
-    {
-        $this->commissions[] = $commissions;
-
-        return $this;
-    }
-
-    /**
-     * Remove commissions
-     *
-     * @param \AppBundle\Entity\Commission $commissions
-     */
-    public function removeCommission(\AppBundle\Entity\Commission $commissions)
-    {
-        $this->commissions->removeElement($commissions);
-    }
-
-    /**
-     * Get commissions
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCommissions()
-    {
-        return $this->commissions;
-    }
-
-    /**
-     * Set commission
-     *
-     * @param \AppBundle\Entity\Commission $commission
-     * @return DiscountCoupon
-     */
-    public function setCommission(\AppBundle\Entity\Commission $commission = null)
-    {
-        $this->commission = $commission;
-
-        return $this;
-    }
-
-    /**
-     * Get commission
-     *
-     * @return \AppBundle\Entity\Commission 
-     */
-    public function getCommission()
-    {
-        return $this->commission;
     }
 }
