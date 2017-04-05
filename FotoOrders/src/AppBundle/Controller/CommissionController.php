@@ -121,12 +121,15 @@ class CommissionController extends Controller
             $commission->setUser($user);
             $user->addCommission($commission);
             
-            $discountCoupon = $this->getDoctrine()->getRepository('AppBundle:DiscountCoupon')->findOneBy(['code'=>$commission->getDiscountCoupon()]);
+            $discountCoupon = $this
+                ->getDoctrine()
+                ->getRepository('AppBundle:DiscountCoupon')
+                ->findOneBy(['code'=>$commission->getDiscountCoupon()]);
+            
             if (isset($discountCoupon)) {
-                $commission->setDiscountCoupon('0.1');
-            } else {
-                $commission->setDiscountCoupon('0');
-            }
+                $commission->setDiscountCoupon($discountCoupon->getValueInPercent());
+            } 
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($commission);
             $em->flush($commission);
@@ -150,9 +153,6 @@ class CommissionController extends Controller
     public function showAction(Commission $commission)
     {
         $deleteForm = $this->createDeleteForm($commission);
-//        $commission->setFilename(
-//            new File($this->getParameter('foto_directory').'/'.$commission->getFilename())
-//        );
         
         return $this->render('commission/show.html.twig', array(
             'commission' => $commission,

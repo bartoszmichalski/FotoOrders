@@ -207,7 +207,7 @@ class Commission
      * @param \AppBundle\Entity\User $user
      * @return Commission
      */
-    public function setUser(\AppBundle\Entity\User $user = null)
+    public function setUser(\AppBundle\Entity\User $user)
     {
         $this->user = $user;
 
@@ -276,7 +276,7 @@ class Commission
      * @param \AppBundle\Entity\Paper $paper
      * @return Commission
      */
-    public function setPaper(\AppBundle\Entity\Paper $paper = null)
+    public function setPaper(\AppBundle\Entity\Paper $paper)
     {
         $this->paper = $paper;
 
@@ -299,7 +299,7 @@ class Commission
      * @param \AppBundle\Entity\Format $format
      * @return Commission
      */
-    public function setFormat(\AppBundle\Entity\Format $format = null)
+    public function setFormat(\AppBundle\Entity\Format $format)
     {
         $this->format = $format;
 
@@ -322,7 +322,7 @@ class Commission
      * @param \AppBundle\Entity\Shipment $shipment
      * @return Commission
      */
-    public function setShipment(\AppBundle\Entity\Shipment $shipment = null)
+    public function setShipment(\AppBundle\Entity\Shipment $shipment)
     {
         $this->shipment = $shipment;
 

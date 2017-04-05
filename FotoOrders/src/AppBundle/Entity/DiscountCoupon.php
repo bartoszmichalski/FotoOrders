@@ -34,6 +34,13 @@ class DiscountCoupon
      * @ORM\Column(name="used", type="boolean")
      */
     private $used;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="value_in_percent", type="integer")
+     */
+    private $valueInPercent;
 
     /**
      * Get id
@@ -89,5 +96,51 @@ class DiscountCoupon
     public function getUsed()
     {
         return $this->used;
+    }
+
+    /**
+     * Set value
+     *
+     * @param float $value
+     * @return DiscountCoupon
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return float 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set valueInPercent
+     *
+     * @param integer $valueInPercent
+     * @return DiscountCoupon
+     */
+    public function setValueInPercent($valueInPercent)
+    {
+        $this->valueInPercent = $valueInPercent;
+
+        return $this;
+    }
+
+    /**
+     * Get valueInPercent
+     *
+     * @return integer 
+     */
+    public function getValueInPercent()
+    {
+        return $this->valueInPercent;
     }
 }
