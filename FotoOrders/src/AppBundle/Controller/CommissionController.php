@@ -131,7 +131,9 @@ class CommissionController extends Controller
             } else {
                 $commission->setDiscountCoupon(0);
             }
-            
+            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
+            $commission->setValue($commission->getValue()*(1-($commission->getDiscountCoupon()/100)));
+               
             $em = $this->getDoctrine()->getManager();
             $em->persist($commission);
             $em->flush($commission);
@@ -208,7 +210,7 @@ class CommissionController extends Controller
             $commission->setFilename($fileName);
             
             $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
-            
+            $commission->setValue($commission->getValue()*(1-($commission->getDiscountCoupon()/100)));
             
             $this->getDoctrine()->getManager()->flush();
 
