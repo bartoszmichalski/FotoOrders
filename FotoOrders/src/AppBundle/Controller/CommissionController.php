@@ -128,6 +128,8 @@ class CommissionController extends Controller
             
             if (isset($discountCoupon)) {
                 $commission->setDiscountCoupon($discountCoupon->getValueInPercent());
+                $discountCoupon->setUsed(true);
+                $this->getDoctrine()->getManager()->flush($discountCoupon);
             } else {
                 $commission->setDiscountCoupon(0);
             }
