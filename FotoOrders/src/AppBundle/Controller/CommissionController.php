@@ -126,7 +126,7 @@ class CommissionController extends Controller
                 ->getRepository('AppBundle:DiscountCoupon')
                 ->findOneBy(['code'=>$commission->getDiscountCoupon()]);
             
-            if (isset($discountCoupon)) {
+            if (isset($discountCoupon) && $discountCoupon->getUsed() == 0) {
                 $commission->setDiscountCoupon($discountCoupon->getValueInPercent());
                 $discountCoupon->setUsed(true);
                 $this->getDoctrine()->getManager()->flush($discountCoupon);
