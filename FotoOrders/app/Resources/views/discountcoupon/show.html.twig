@@ -17,6 +17,10 @@
                 <th>Used</th>
                 <td>{% if discountCoupon.used %}Yes{% else %}No{% endif %}</td>
             </tr>
+            <tr>
+                <th>Value in percent</th>
+                <td>{{ discountCoupon.valueInPercent }} %</td>
+            </tr>
         </tbody>
     </table>
 
