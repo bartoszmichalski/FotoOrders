@@ -106,16 +106,13 @@ class CommissionController extends Controller
             // instead of its contents
             $commission->setFilename($fileName);
 
-            // set status of commission and creationTIme
+            // set status of commission to new
             $state = $this->getDoctrine()->getRepository('AppBundle:State')->find(1);
             $commission->setState($state);
             $state->addCommission($commission);
-            
-            //set commission value according to copies, paper price & shipment value
-            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
-
-            
+            // set creationTime
             $commission->setCreationTime(time());
+                                
             // set logged user as owner of commission
             $user = $this->getUser();
             $commission->setUser($user);
@@ -126,16 +123,9 @@ class CommissionController extends Controller
                 ->getRepository('AppBundle:DiscountCoupon')
                 ->findOneBy(['code'=>$commission->getDiscountCoupon()]);
             
-            if (isset($discountCoupon) && $discountCoupon->getUsed() == 0) {
-                $commission->setDiscountCoupon($discountCoupon->getValueInPercent());
-                $discountCoupon->setUsed(true);
-                $this->getDoctrine()->getManager()->flush($discountCoupon);
-            } else {
-                $commission->setDiscountCoupon(0);
-            }
-            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
-            $commission->setValue($commission->getValue()*(1-($commission->getDiscountCoupon()/100)));
-               
+            $commission->setValueAccordingToParameters($discountCoupon);
+            $this->getDoctrine()->getManager()->flush($discountCoupon);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($commission);
             $em->flush($commission);
@@ -211,10 +201,15 @@ class CommissionController extends Controller
             // instead of its contents
             $commission->setFilename($fileName);
             
-            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
-            $commission->setValue($commission->getValue()*(1-($commission->getDiscountCoupon()/100)));
+            $discountCoupon = $this
+                ->getDoctrine()
+                ->getRepository('AppBundle:DiscountCoupon')
+                ->findOneBy(['code' => $commission->getDiscountCoupon()]);
             
-            $this->getDoctrine()->getManager()->flush();
+            $commission->setValueAccordingToParameters($discountCoupon);
+            $this->getDoctrine()->getManager()->flush($discountCoupon);
+            
+            $this->getDoctrine()->getManager()->flush($commission);
 
             return $this->redirectToRoute('commission_show', array('id' => $commission->getId()));
         }
