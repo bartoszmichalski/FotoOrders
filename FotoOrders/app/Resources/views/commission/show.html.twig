@@ -54,6 +54,10 @@
                 <td>{%  if  commission.completionTime != 0 %}{{ commission.completionTime|date("Y/m/d") }} {% else %} {{ '---' }}{% endif %}</td>
             </tr>
             <tr>
+                <th>Discount Coupon</th>
+                <td>{{ commission.discountCoupon }} %</td>
+            </tr>
+            <tr>
                 <th>Commission Value</th>
                 <td>{{ commission.value |number_format(2, '.', ',') }} (shipment included)</td>
             </tr>           
