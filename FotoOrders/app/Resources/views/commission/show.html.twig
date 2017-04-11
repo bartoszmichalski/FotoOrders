@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <th>Commission Value</th>
-                <td>{{ commission.value |number_format(2, '.', ',') }} (shipment included)</td>
+                <td>{{ commission.value |number_format(2, '.', ',') }} {% if commission.shipment.type != 'Pick up your own'%} (shipment included) {% endif %}</td>
             </tr>           
         </tbody>
     </table>
