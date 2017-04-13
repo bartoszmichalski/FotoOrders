@@ -63,10 +63,15 @@
                     {{ commission.value |number_format(2, '.', ',') }}
                     <br>
                     How was this price calculated:<br>
-                   {{ commission.paper.price |number_format(2, '.', ',')}}(paper price) *{{ commission.copies }}(copies){% if commission.shipment.type != 'Pick up your own'%}
-                       <br>+{{ commission.shipment.value }}(shipment)
-                       {% if commission.discountCoupon !='' %}<br>-{{ commission.discountCoupon }} %(discount coupon){% endif %}
-                    {% endif %}</td>
+                    {{ commission.paper.price |number_format(2, '.', ',')}}(paper price)
+                    *{{ commission.copies }}(copies)
+                    {% if commission.shipment.type != 'Pick up your own'%}<br>
+                        +{{ commission.shipment.value |number_format(2, '.', ',')}}(shipment)
+                    {% endif %}
+                    {% if commission.discountCoupon !=0 %}<br>
+                        -{{ commission.discountCoupon }} %(discount coupon)
+                    {% endif %}
+                </td>
             </tr>           
         </tbody>
     </table>
