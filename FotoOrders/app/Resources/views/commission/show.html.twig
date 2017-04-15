@@ -64,7 +64,12 @@
                     <br>
                     How was this price calculated:
                     <br>
-                    <table>
+                    <table class="table">
+                        <tr>
+                            <th></th>
+                            <th>value</th>
+                            <th>article</th>
+                        </tr>
                         <tr>
                             <td></td>
                             <td>{{ commission.paper.price |number_format(2, '.', ',')}}</td>
@@ -72,8 +77,8 @@
                         </tr>
                         <tr>
                             <td>*</td>
-                            <td> {{ commission.copies }}</td>
-                            <td>copies</td>
+                            <td>{{ commission.copies }}</td>
+                            <td>{% if commission.copies == 1 %} copy {% else %}copies{% endif %}</td>
                         </tr>
                        {% if commission.shipment.type != 'Pick up your own'%}
                         <tr>
