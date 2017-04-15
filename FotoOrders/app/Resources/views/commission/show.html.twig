@@ -66,22 +66,26 @@
                     <br>
                     <table>
                         <tr>
+                            <td></td>
                             <td>{{ commission.paper.price |number_format(2, '.', ',')}}</td>
                             <td>paper price</td>
                         </tr>
                         <tr>
-                            <td>* {{ commission.copies }}</td>
+                            <td>*</td>
+                            <td> {{ commission.copies }}</td>
                             <td>copies</td>
                         </tr>
                        {% if commission.shipment.type != 'Pick up your own'%}
                         <tr>
-                            <td>+ {{ commission.shipment.value |number_format(2, '.', ',')}}</td>
+                            <td>+</td>
+                            <td>{{ commission.shipment.value |number_format(2, '.', ',')}}</td>
                             <td>shipment</td>
                         </tr>
                         {% endif %}
                         {% if commission.discountCoupon !=0 %}
                         <tr>
-                            <td>- {{ commission.discountCoupon }} % </td>
+                            <td>-</td>
+                            <td>{{ commission.discountCoupon }} % </td>
                             <td> discount coupon</td>
                         </tr>
                         {% endif %}
