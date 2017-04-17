@@ -7,6 +7,9 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Last Login</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,10 +19,11 @@
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.email }}</a></td>
+                <td>{{ user.lastLogin|date("Y/m/d")  }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                            <a href="{{ path('commission_allByUser_index', { 'userId': user.id }) }}">show commisions</a>
                         </li>
                     </ul>
                 </td>
