@@ -32,19 +32,4 @@ class UserController extends Controller
             'users' => $users,
         ));
     }
-
-    /**
-     * Finds and displays a user entity.
-     *
-     * @Route("/{id}", name="user_show")
-     * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN')")
-     */
-    public function showAction(User $user)
-    {
-
-        return $this->render('user/show.html.twig', array(
-            'user' => $user,
-        ));
-    }
 }
