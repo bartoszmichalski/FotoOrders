@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Commission</h1>
-
+    {% if app.user == commission.user %}
     <table class="table table-hover">
         <tbody>
             <tr>
@@ -118,4 +118,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    {% endif %}
 {% endblock %}

@@ -17,6 +17,7 @@
         </table>
         {{ form_end(edit_form) }}
      {% else %}
+        {% if app.user == commission.user %}
         {{ form_start(edit_form) }}
         <table class="table table-hover">
             <tr>
@@ -45,6 +46,7 @@
             </tr>
         </table>
         {{ form_end(edit_form) }}
+        {% endif %}
     {% endif %}
     <br>
     <ul>

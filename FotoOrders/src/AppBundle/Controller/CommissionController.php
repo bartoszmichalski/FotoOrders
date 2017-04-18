@@ -210,6 +210,9 @@ class CommissionController extends Controller
             // instead of its contents
             $commission->setFilename($fileName);
             
+            //calculate value
+            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
+
             $discountCoupon = $this
                 ->getDoctrine()
                 ->getRepository('AppBundle:DiscountCoupon')
