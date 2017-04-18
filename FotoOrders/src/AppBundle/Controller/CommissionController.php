@@ -117,16 +117,25 @@ class CommissionController extends Controller
             $user = $this->getUser();
             $commission->setUser($user);
             $user->addCommission($commission);
+            //calculate value
+            $commission->setValue(($commission->getPaper()->getPrice() * $commission->getCopies()) + $commission->getShipment()->getValue());
             
             $discountCoupon = $this
                 ->getDoctrine()
                 ->getRepository('AppBundle:DiscountCoupon')
                 ->findOneBy(['code'=>$commission->getDiscountCoupon()]);
             
-            $commission->setValueAccordingToParameters($discountCoupon);
-            $this->getDoctrine()->getManager()->flush($discountCoupon);
+            if (isset($discountCoupon) && $discountCoupon->getUsed() == 0) {
+                $commission->setDiscountCoupon($discountCoupon->getValueInPercent());
+                $commission->setValue($commission->getValue()*(1-($commission->getDiscountCoupon()/100)));
+                $discountCoupon->setUsed(true);
+                $this->getDoctrine()->getManager()->flush($discountCoupon);
+            } else {
+                $commission->setDiscountCoupon(0);
+            }
             
             $em = $this->getDoctrine()->getManager();
+            
             $em->persist($commission);
             $em->flush($commission);
 
@@ -204,10 +213,16 @@ class CommissionController extends Controller
             $discountCoupon = $this
                 ->getDoctrine()
                 ->getRepository('AppBundle:DiscountCoupon')
-                ->findOneBy(['code' => $commission->getDiscountCoupon()]);
+                ->findOneBy(['code'=>$commission->getDiscountCoupon()]);
             
-            $commission->setValueAccordingToParameters($discountCoupon);
-            $this->getDoctrine()->getManager()->flush($discountCoupon);
+            if (isset($discountCoupon) && $discountCoupon->getUsed() == 0) {
+                $commission->setDiscountCoupon($discountCoupon->getValueInPercent());
+                $commission->setValue($commission->getValue()*(1-($commission->getDiscountCoupon()/100)));
+                $discountCoupon->setUsed(true);
+                $this->getDoctrine()->getManager()->flush($discountCoupon);
+            } else {
+                $commission->setDiscountCoupon(0);
+            }
             
             $this->getDoctrine()->getManager()->flush($commission);
 

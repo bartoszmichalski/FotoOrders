@@ -385,17 +385,5 @@ class Commission
         return $this->discountCoupon;
     }
     
-    public function setValueAccordingToParameters($discountCoupon){
-  
-        if (isset($discountCoupon) && $discountCoupon->getUsed() == 0) {
-            $this->setDiscountCoupon($discountCoupon->getValueInPercent());
-            $discountCoupon->setUsed(true);
-        } else {
-            $this->setDiscountCoupon(0);
-        }
-        $this->setValue(($this->getPaper()->getPrice() * $this->getCopies()) + $this->getShipment()->getValue());
-        $this->setValue($this->getValue()*(1-($this->getDiscountCoupon()/100)));
-
-        return $this;
-    }
+    
 }
