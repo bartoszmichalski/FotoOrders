@@ -16,7 +16,13 @@
         <tbody>
         {% for shipment in shipments %}
             <tr>
-                <td><a href="{{ path('shipment_show', { 'id': shipment.id }) }}">{{ shipment.id }}</a></td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('shipment_show', { 'id': shipment.id }) }}">{{ shipment.id }}</a>
+                    {% else %}
+                        {{ shipment.id }}
+                    {% endif %}
+                </td>
                 <td>{{ shipment.type }}</td>
                 <td>{{ shipment.description }}</td>
                 <td>{{ shipment.value |number_format(2, '.', ',') }}</td>

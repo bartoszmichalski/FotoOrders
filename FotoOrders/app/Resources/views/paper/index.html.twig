@@ -15,7 +15,13 @@
         <tbody>
         {% for paper in papers %}
             <tr>
-                <td><a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a></td>
+                <td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a>
+                    {% else %}
+                        {{ paper.id }}
+                    {% endif %}
+                    </td>
                 <td>{{ paper.description }}</td>
                 <td>{{ paper.price |number_format(2, '.', ',') }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
