@@ -21,7 +21,7 @@ class FormatController extends Controller
      *
      * @Route("/", name="format_index")
      * @Method("GET")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
     {

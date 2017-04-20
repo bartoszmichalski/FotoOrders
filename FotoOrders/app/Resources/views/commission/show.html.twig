@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Commission</h1>
-    {% if app.user == commission.user %}
+    {% if (app.user == commission.user or is_granted('ROLE_ADMIN'))%}
     <table class="table table-hover">
         <tbody>
             <tr>
@@ -80,7 +80,7 @@
                             <td>{{ commission.copies }}</td>
                             <td>{% if commission.copies == 1 %} copy {% else %}copies{% endif %}</td>
                         </tr>
-                       {% if commission.shipment.type != 'Pick up your own'%}
+                       {% if commission.shipment.type != 'Pickup'%}
                         <tr>
                             <td>+</td>
                             <td>{{ commission.shipment.value |number_format(2, '.', ',')}}</td>

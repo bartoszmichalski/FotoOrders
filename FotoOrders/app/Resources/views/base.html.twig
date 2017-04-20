@@ -47,6 +47,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ path('paper_index')}}">Price list</a></li>
+                                    <li><a href="{{ path('format_index')}}">Format list</a></li>
                                     <li><a href="{{ path('shipment_index')}}">Shipment</a></li>
                                     {% if is_granted('ROLE_ADMIN') %}
                                     <li role="separator" class="divider"></li>
