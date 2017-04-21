@@ -80,7 +80,7 @@
                             <td>{{ commission.copies }}</td>
                             <td>{% if commission.copies == 1 %} copy {% else %}copies{% endif %}</td>
                         </tr>
-                       {% if commission.shipment.type != 'Pickup'%}
+                       {% if commission.shipment.toShip != 0 %}
                         <tr>
                             <td>+</td>
                             <td>{{ commission.shipment.value |number_format(2, '.', ',')}}</td>

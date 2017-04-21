@@ -120,4 +120,27 @@ class DiscountCoupon
     {
         return $this->value;
     }
+
+    /**
+     * Set valueInPercent
+     *
+     * @param integer $valueInPercent
+     * @return DiscountCoupon
+     */
+    public function setValueInPercent($valueInPercent)
+    {
+        $this->valueInPercent = $valueInPercent;
+
+        return $this;
+    }
+
+    /**
+     * Get valueInPercent
+     *
+     * @return integer 
+     */
+    public function getValueInPercent()
+    {
+        return $this->valueInPercent;
+    }
 }

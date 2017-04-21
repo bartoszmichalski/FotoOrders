@@ -13,7 +13,7 @@ class ShipmentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type')->add('description')->add('value');
+        $builder->add('type')->add('description')->add('value')->add('toShip');
     }
     
     /**

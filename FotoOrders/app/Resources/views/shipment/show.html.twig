@@ -17,6 +17,10 @@
                 <th>Description</th>
                 <td>{{ shipment.description }}</td>
             </tr>
+            <tr>
+                <th>To ship</th>
+                <td>{{ shipment.toShip }}</td>
+            </tr>
         </tbody>
     </table>
     {% if is_granted('ROLE_ADMIN') %}

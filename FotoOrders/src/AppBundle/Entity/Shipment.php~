@@ -49,6 +49,13 @@ class Shipment
     private $commissions;
     
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="to_ship", type="boolean")
+     */
+    private $toShip;
+    
+    /**
      * Constructor
      */
     public function __construct()
@@ -166,5 +173,28 @@ class Shipment
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set toShip
+     *
+     * @param integer $toShip
+     * @return Shipment
+     */
+    public function setToShip($toShip)
+    {
+        $this->toShip = $toShip;
+
+        return $this;
+    }
+
+    /**
+     * Get toShip
+     *
+     * @return integer 
+     */
+    public function getToShip()
+    {
+        return $this->toShip;
     }
 }
