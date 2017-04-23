@@ -27,8 +27,7 @@ class CommissionType extends AbstractType
             ->add('format', EntityType::class , array('class'=> 'AppBundle\Entity\Format', 'choice_label'=>'description', 'label' => 'Format: '))  
             ->add('shipment', EntityType::class , array('class'=> 'AppBundle\Entity\Shipment', 'choice_label'=>'type', 'label' => 'Shipment: '))  
             ->add('discountCoupon', TextType::class, array('label' => 'Discount Coupon: ','required'=>false));
-        }
-
+    }
 
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -44,6 +43,4 @@ class CommissionType extends AbstractType
     {
         return 'appbundle_commission';
     }
-
-
 }
