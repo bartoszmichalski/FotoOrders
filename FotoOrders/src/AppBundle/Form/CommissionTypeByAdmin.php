@@ -4,12 +4,9 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Commission;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use XMLReader;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CommissionTypeByAdmin extends AbstractType
@@ -29,7 +26,7 @@ class CommissionTypeByAdmin extends AbstractType
                 'html5' => false,
 
                 // add a class that can be selected in JavaScript
-                'attr' => ['class' => 'js-datepicker', 'placeholder'=>'YYYY-MM-DD'],
+                'attr' => ['class' => 'js-datepicker form-control', 'placeholder'=>'YYYY-MM-DD'],
             ));
     }
 
