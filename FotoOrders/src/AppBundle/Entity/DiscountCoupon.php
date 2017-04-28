@@ -99,29 +99,6 @@ class DiscountCoupon
     }
 
     /**
-     * Set value
-     *
-     * @param float $value
-     * @return DiscountCoupon
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * Get value
-     *
-     * @return float 
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
      * Set valueInPercent
      *
      * @param integer $valueInPercent

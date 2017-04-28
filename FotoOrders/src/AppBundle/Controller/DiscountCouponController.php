@@ -44,7 +44,7 @@ class DiscountCouponController extends Controller
     public function newAction(Request $request)
     {
         $discountCoupon = new Discountcoupon();
-        $discountCoupon->setValue(10);
+        $discountCoupon->setValueInPercent(10);
         $discountCoupon->setCode(random_int(0,100000000));
         $form = $this->createForm('AppBundle\Form\DiscountCouponType', $discountCoupon);
         $form->handleRequest($request);
