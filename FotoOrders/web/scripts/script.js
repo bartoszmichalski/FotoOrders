@@ -3,5 +3,5 @@ jQuery(document).ready(function () {
         format: "yyyy-mm-dd",
         todayHighlight: true,
         autoclose: true
-    });
+    });    
 });
