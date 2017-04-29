@@ -38,15 +38,15 @@
         </tbody>
     </table>
     {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-default" href="{{ path('commission_all_index') }}">Back to the list</a>
-    {% else %}
-        <a class="btn btn-default" href="{{ path('commission_index') }}">Back to the list</a>
-    {% endif %}
-    {% if is_granted('ROLE_ADMIN') %}
     <ul>
         <li>
             <a class="btn btn-default" href="{{ path('format_new') }}">Create a new format</a>
         </li>
     </ul>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-default" href="{{ path('commission_all_index') }}">Back to the list</a>
+    {% else %}
+        <a class="btn btn-default" href="{{ path('commission_index') }}">Back to the list</a>
     {% endif %}
 {% endblock %}
