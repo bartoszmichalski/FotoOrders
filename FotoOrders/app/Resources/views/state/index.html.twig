@@ -36,4 +36,9 @@
             <a class="btn btn-default" href="{{ path('state_new') }}">Create a new state</a>
         </li>
     </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-default" href="{{ path('commission_all_index') }}">Back to the list</a>
+    {% else %}
+        <a class="btn btn-default" href="{{ path('commission_index') }}">Back to the list</a>
+    {% endif %}
 {% endblock %}
