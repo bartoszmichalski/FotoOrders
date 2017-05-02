@@ -73,7 +73,7 @@
                         <tr>
                             <td></td>
                             <td>{{ commission.paper.price |number_format(2, '.', ',')}}</td>
-                            <td>paper price</td>
+                            <td>format's price ({{ commission.format.description }})</td>
                         </tr>
                         <tr>
                             <td>*</td>
@@ -84,7 +84,7 @@
                         <tr>
                             <td>+</td>
                             <td>{{ commission.shipment.value |number_format(2, '.', ',')}}</td>
-                            <td>shipment</td>
+                            <td>shipment ({{ commission.shipment.type }})</td>
                         </tr>
                         {% endif %}
                         {% if commission.discountCoupon !=0 %}
