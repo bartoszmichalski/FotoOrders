@@ -28,6 +28,13 @@ class Format
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="recommended_resolution", type="string", length=255)
+     */    
+    private $recommendedResolution;
     
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commission", mappedBy="format")
@@ -103,5 +110,28 @@ class Format
     public function getCommissions()
     {
         return $this->commissions;
+    }
+
+    /**
+     * Set recommendedResolution
+     *
+     * @param string $recommendedResolution
+     * @return Format
+     */
+    public function setRecommendedResolution($recommendedResolution)
+    {
+        $this->recommendedResolution = $recommendedResolution;
+
+        return $this;
+    }
+
+    /**
+     * Get recommendedResolution
+     *
+     * @return string 
+     */
+    public function getRecommendedResolution()
+    {
+        return $this->recommendedResolution;
     }
 }

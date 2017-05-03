@@ -28,6 +28,13 @@ class Format
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="recommended_resolution", type="string", length=255)
+     */    
+    private $recommendedResolution;
     
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commission", mappedBy="format")

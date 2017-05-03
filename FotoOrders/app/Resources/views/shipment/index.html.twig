@@ -10,6 +10,7 @@
                 <th>Type</th>
                 <th>Description</th>
                 <th>Value</th>
+                {% if is_granted('ROLE_ADMIN') %}<th>To ship</th>{% endif %}
                 {% if is_granted('ROLE_ADMIN') %}<th>Actions</th>{% endif %}
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                 <td>{{ shipment.type }}</td>
                 <td>{{ shipment.description }}</td>
                 <td>{{ shipment.value |number_format(2, '.', ',') }}</td>
+                {% if is_granted('ROLE_ADMIN') %}<td>{{ shipment.toShip }}</td>{% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                 <td>
                     <ul>
