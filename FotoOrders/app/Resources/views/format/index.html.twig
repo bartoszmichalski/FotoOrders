@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Description</th>
+                <th>Recommended resolution in MPx</th>
                 {% if is_granted('ROLE_ADMIN') %}<th>Actions</th>{% endif %}
             </tr>
         </thead>
@@ -21,6 +22,7 @@
                         {{ format.id }}
                     {% endif %}
                 <td>{{ format.description }}</td>
+                <td>{{ format.recommendedResolution }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
                 <td>
                     <ul>
