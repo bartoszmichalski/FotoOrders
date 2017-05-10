@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Users list</h1>
 
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,11 +21,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.lastLogin|date("Y/m/d")  }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('commission_allByUser_index', { 'userId': user.id }) }}">show commisions</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('commission_allByUser_index', { 'userId': user.id }) }}">show commisions</a>
                 </td>
             </tr>
         {% endfor %}
