@@ -21,7 +21,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.lastLogin|date("Y/m/d")  }}</td>
                 <td>
-                    <a href="{{ path('commission_allByUser_index', { 'userId': user.id }) }}">show commisions</a>
+                    <a class="btn btn-default" href="{{ path('commission_allByUser_index', { 'userId': user.id }) }}">show commisions</a>
                 </td>
             </tr>
         {% endfor %}
