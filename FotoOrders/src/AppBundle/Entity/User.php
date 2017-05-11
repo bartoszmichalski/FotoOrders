@@ -38,7 +38,7 @@ class User extends BaseUser
      * @param \AppBundle\Entity\Commission $commissions
      * @return User
      */
-    public function addCommission(\AppBundle\Entity\Commission $commissions)
+    public function addCommission(Commission $commissions)
     {
         $this->commissions[] = $commissions;
 
@@ -50,7 +50,7 @@ class User extends BaseUser
      *
      * @param \AppBundle\Entity\Commission $commissions
      */
-    public function removeCommission(\AppBundle\Entity\Commission $commissions)
+    public function removeCommission(Commission $commissions)
     {
         $this->commissions->removeElement($commissions);
     }
