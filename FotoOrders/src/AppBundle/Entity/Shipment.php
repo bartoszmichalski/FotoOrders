@@ -125,7 +125,7 @@ class Shipment
      * @param \AppBundle\Entity\Shipment $commissions
      * @return Shipment
      */
-    public function addCommission(\AppBundle\Entity\Shipment $commissions)
+    public function addCommission(Shipment $commissions)
     {
         $this->commissions[] = $commissions;
 
@@ -137,7 +137,7 @@ class Shipment
      *
      * @param \AppBundle\Entity\Shipment $commissions
      */
-    public function removeCommission(\AppBundle\Entity\Shipment $commissions)
+    public function removeCommission(Shipment $commissions)
     {
         $this->commissions->removeElement($commissions);
     }
