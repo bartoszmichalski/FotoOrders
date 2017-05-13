@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Commission;
 
 /**
  * State
@@ -80,7 +81,7 @@ class State
      * @param \AppBundle\Entity\Commission $commissions
      * @return State
      */
-    public function addCommission(\AppBundle\Entity\Commission $commissions)
+    public function addCommission(Commission $commissions)
     {
         $this->commissions[] = $commissions;
 
@@ -92,7 +93,7 @@ class State
      *
      * @param \AppBundle\Entity\Commission $commissions
      */
-    public function removeCommission(\AppBundle\Entity\Commission $commissions)
+    public function removeCommission(Commission $commissions)
     {
         $this->commissions->removeElement($commissions);
     }
