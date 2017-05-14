@@ -6,7 +6,6 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Description</th>
                 <th>Recommended resolution in MPx</th>
                 {% if is_granted('ROLE_ADMIN') %}<th>Actions</th>{% endif %}
@@ -15,12 +14,6 @@
         <tbody>
         {% for format in formats %}
             <tr>
-                <td>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('format_show', { 'id': format.id }) }}">{{ format.id }}</a></td>
-                    {% else %}
-                        {{ format.id }}
-                    {% endif %}
                 <td>{{ format.description }}</td>
                 <td>{{ format.recommendedResolution }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
