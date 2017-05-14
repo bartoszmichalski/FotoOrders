@@ -6,7 +6,6 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Code</th>
                 <th>Used</th>
                 <th>Value in percent</th>
@@ -16,7 +15,6 @@
         <tbody>
         {% for discountCoupon in discountCoupons %}
             <tr>
-                <td><a href="{{ path('discountcoupon_show', { 'id': discountCoupon.id }) }}">{{ discountCoupon.id }}</a></td>
                 <td>{{ discountCoupon.code }}</td>
                 <td>{% if discountCoupon.used %}Yes{% else %}No{% endif %}</td>
                 <td>{{ discountCoupon.valueInPercent }} %</td>
