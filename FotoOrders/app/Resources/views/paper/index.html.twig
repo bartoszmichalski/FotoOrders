@@ -6,7 +6,6 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Description</th>
                 <th>Price</th>
                 {% if is_granted('ROLE_ADMIN') %}<th>Actions</th>{% endif %}
@@ -15,13 +14,6 @@
         <tbody>
         {% for paper in papers %}
             <tr>
-                <td>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('paper_show', { 'id': paper.id }) }}">{{ paper.id }}</a>
-                    {% else %}
-                        {{ paper.id }}
-                    {% endif %}
-                    </td>
                 <td>{{ paper.description }}</td>
                 <td>{{ paper.price |number_format(2, '.', ',') }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
