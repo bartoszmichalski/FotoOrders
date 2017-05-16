@@ -19,7 +19,7 @@
                 <td>{{ shipment.type }}</td>
                 <td>{{ shipment.description }}</td>
                 <td>{{ shipment.value |number_format(2, '.', ',') }}</td>
-                {% if is_granted('ROLE_ADMIN') %}<td>{{ shipment.toShip }}</td>{% endif %}
+                {% if is_granted('ROLE_ADMIN') %}<td>{% if shipment.toShip == 1 %}Yes{% else %}No{% endif %}</td>{% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                 <td>
                     <ul>
