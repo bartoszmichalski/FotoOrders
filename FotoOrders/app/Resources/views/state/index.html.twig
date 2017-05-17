@@ -3,10 +3,9 @@
 {% block body %}
     <h1>States list</h1>
 
-    <table class="table table-hover">
+    <table class="table table-hover col-md-offset-1">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
@@ -14,7 +13,6 @@
         <tbody>
         {% for state in states %}
             <tr>
-                <td><a href="{{ path('state_show', { 'id': state.id }) }}">{{ state.id }}</a></td>
                 <td>{{ state.description }}</td>
                 <td>
                     <ul>
