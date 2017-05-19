@@ -66,31 +66,26 @@
                     <br>
                     <table class="table">
                         <tr>
-                            <th></th>
                             <th>value</th>
+                            <th>quantity</th>
                             <th>article</th>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>{{ commission.paper.price |number_format(2, '.', ',')}}</td>
-                            <td>price (format: {{ commission.format.description }}, paper: {{ commission.paper.description }})</td>
-                        </tr>
-                        <tr>
-                            <td>*</td>
                             <td>{{ commission.copies }}</td>
-                            <td>{% if commission.copies == 1 %} copy {% else %}copies{% endif %}</td>
+                            <td>photo (format: {{ commission.format.description }}, paper: {{ commission.paper.description }})</td>
                         </tr>
                        {% if commission.shipment.toShip != 0 %}
                         <tr>
-                            <td>+</td>
                             <td>{{ commission.shipment.value |number_format(2, '.', ',')}}</td>
+                            <td>1</td>
                             <td>shipment ({{ commission.shipment.type }})</td>
                         </tr>
                         {% endif %}
                         {% if commission.discountCoupon !=0 %}
                         <tr>
-                            <td>-</td>
-                            <td>{{ commission.discountCoupon }} % </td>
+                            <td> - {{ commission.discountCoupon }} % </td>
+                            <td></td>
                             <td> discount coupon</td>
                         </tr>
                         {% endif %}
